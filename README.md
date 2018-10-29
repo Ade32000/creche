@@ -32,7 +32,7 @@ La page administrative servira pour:
 
 Vous devez réaliser toute la conception de ce projet:
 * Vous devez réaliser un diagramme d'interaction (diagramme d'état ou d’activité) et un diagramme des cas d'utilisation
-* Vous devez concevoir un modèle conceptuel de données et des fichiers de migration de base de données
+* Vous devez concevoir un modèle conceptuel de données
 * Vous devez réaliser une maquette fonctionnelle pour toutes les pages nécessaire au programme
 
 
