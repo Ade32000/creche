@@ -1,0 +1,22 @@
+{
+  "name": "creche",
+  "version": "1.0.0",
+  "description": "### 1. Énoncé: Une crèche souhaite avoir un logiciel interne pour accéder plus facilement aux détails des enfants. Il est possible de garder un enfant durant la journée complète, la demi-journée (matin ou après-midi) et/ou la nuit (19h-8h). Le centre à besoin de deux pages : une page d'accueil et une page administrative.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ade32000/creche.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ade32000/creche/issues"
+  },
+  "homepage": "https://github.com/Ade32000/creche#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3"
+  }
+}
