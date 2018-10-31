@@ -41,7 +41,7 @@ Vous devez réaliser toute la conception de ce projet:
 
 ### 3. Réalisation
 
-La crèche souhaite garder la même architecture sur leur base de données et vous fournis le MCD pour développer l'application. Utilisez un script SQL pour générer cette base de données.
+La crèche souhaite garder l'architecture actuelle sur leur base de données et vous fournis le MCD pour développer l'application. Utilisez un script SQL pour générer cette base de données.
 Le projet devra être réalisé en PHP natif.
 
 Il n'est pas nécessaire de gérer les connexions utilisateurs, le pages administratives seront publiques.
