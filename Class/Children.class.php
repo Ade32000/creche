@@ -4,6 +4,7 @@
 /**
  * 
  */
+
 class Children 
 {
 
@@ -24,6 +25,80 @@ class Children
 		$this->parents_contact = $parents_contact;
 		$this->remarks = $remarks;
 	}
+
+
+	/* 
+
+		The function addChild inserts a new child file in the database.
+
+	*/
+
+	public function addchild($child, $db){
+
+		//require_once 'ConnectDB.class.php';
+		
+
+
+        $newChild = $db->prepare('INSERT INTO children(children_firstname,children_lastname,children_birthday,children_adress,children_parents_contact,children_remarks)
+
+        VALUES (:children_firstname,:children_lastname,:children_birthday,:children_adress,:children_parents_contact,:children_remarks)');
+
+
+        $newChild->execute(array(
+
+        ':children_firstname' => $child->firstname,
+
+        ':children_lastname' => $child->lastname,
+
+        ':children_birthday' => $child->birthday,
+
+        ':children_adress' => $child->address,
+
+        ':children_parents_contact' => $child->parents_contact,
+
+        ':children_remarks' => $child->remarks
+
+        ));
+
+        return $newChild;
+	}
+
+
+	/* 
+
+		The function cancelChild deletes a child file in the database.
+
+	*/
+
+	public function cancelChild($childId)
+    {
+    	//require 'ConnectDB.class.php';
+
+         $delChild = $db->query('DELETE FROM children WHERE children_id='.$childId);
+
+         return $delChild;
+
+    }
+
+    /* 
+
+		The function updateChild updates a child file in the database.
+
+	*/
+
+	public function updateChild($child)
+	{
+		//require 'ConnectDB.class.php';
+
+		$upChild = $db->query("UPDATE children SET children_firstname='$child->firstname',children_lastname='$child->lastname',children_birthday,='$child->birthday',children_adress='$child->address',children_parents_contact='$child->parents_contact',children_remarks='$child->remarks'");
+
+		return $upChild;
+
+	}
+
+
+
+
 }
 
 

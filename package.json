@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Ade32000/creche#readme",
   "dependencies": {
-    "bootstrap": "^4.1.3"
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
   }
 }
