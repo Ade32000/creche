@@ -18,15 +18,17 @@
 
 function displayChildren($db)
 {
+	$cpt = 0;
 
 	echo 
 
-	"<table>
+	"<table class='table table-hover'>
 		<thead>
 			<tr>
-				<th>Prénom</th>
-				<th>Nom</th>
-				<th>Infos</th>
+				<th scope='col'>#</th>
+				<th scope='col'>Prénom</th>
+				<th scope='col'>Nom</th>
+				<th scope='col'>Fiche enfant</th>
 			</tr>
 		</thead>
 		<tbody>";
@@ -37,12 +39,15 @@ function displayChildren($db)
    	while($datas=$responses->fetch())
 	{
 
+		$cpt++;
+
 		echo 
 
 		"<tr>
+			<th scope='row'>" . $cpt . "</th>
 			<td>" . $datas['children_firstname'] . "</td>
 			<td>" . $datas['children_lastname'] . "</td>
-			<td> Infos ></td>
+			<td> <a href='index.php'>Infos ></a></td>
 		</tr>";
 
 	}

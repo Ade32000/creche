@@ -18,12 +18,14 @@ class Children
 	
 	function __construct($firstname, $lastname, $birthday, $address, $parents_contact, $remarks)
 	{
+
 		$this->firstname = $firstname;
 		$this->lastname = $lastname;
 		$this->birthday = $birthday;
 		$this->address = $address;
 		$this->parents_contact = $parents_contact;
 		$this->remarks = $remarks;
+
 	}
 
 
@@ -33,12 +35,10 @@ class Children
 
 	*/
 
-	public function addchild($child, $db){
+	public function addchild($child, $db)
+	{
 
-		//require_once 'ConnectDB.class.php';
 		
-
-
         $newChild = $db->prepare('INSERT INTO children(children_firstname,children_lastname,children_birthday,children_adress,children_parents_contact,children_remarks)
 
         VALUES (:children_firstname,:children_lastname,:children_birthday,:children_adress,:children_parents_contact,:children_remarks)');
@@ -60,7 +60,9 @@ class Children
 
         ));
 
+
         return $newChild;
+
 	}
 
 
@@ -70,15 +72,15 @@ class Children
 
 	*/
 
-	public function cancelChild($childId)
+	public function cancelChild($childId,$db)
     {
-    	//require 'ConnectDB.class.php';
-
+    
          $delChild = $db->query('DELETE FROM children WHERE children_id='.$childId);
 
          return $delChild;
 
     }
+
 
     /* 
 
@@ -86,11 +88,12 @@ class Children
 
 	*/
 
-	public function updateChild($child)
+	public function updateChild($child,$db)
 	{
-		//require 'ConnectDB.class.php';
+		
 
 		$upChild = $db->query("UPDATE children SET children_firstname='$child->firstname',children_lastname='$child->lastname',children_birthday,='$child->birthday',children_adress='$child->address',children_parents_contact='$child->parents_contact',children_remarks='$child->remarks'");
+
 
 		return $upChild;
 

@@ -31,20 +31,36 @@
 
 		*/
 
-		$DBase = new ConnectDB('localhost','newcreche','xxx','xxx');
+		$DBase = new ConnectDB('localhost','newcreche','xx','xx');
 		$db = $DBase->connexion();
 		
-		$Helder = new Children ("Helder", "Morais", "1973-04-27", "Rue du paradis 32000 Auch", "Mme Morais 0612345678", "RAS");
+		$Helder = new Children ("Helder", "Toto", "1999-04-27", "Rue du paradis 32000 Auch", "Mme Toto 0612345678", "RAS");
 
 
-		$Helder->addChild($Helder, $db);
-		//$Helder->cancelChild(1);
+		//$Helder->addChild($Helder, $db);
+		//$Helder->cancelChild(11,$db);
+		
+		
 
-		displayChildren($db);
+
+		
 
 
  ?>
 
+ 		<nav class="nav nav-pills nav-fill">
+		  <a class="nav-item nav-link active" href="#">Accueil</a>
+		  <a class="nav-item nav-link disabled" href="#">Enfants</a>
+		  <a class="nav-item nav-link" href="#">Activités</a>
+		  <a class="nav-item nav-link" href="#">Espace Admin</a>
+		</nav>
+		
+
+		<?php 
+			echo '<h3>Liste des enfants</h3>';
+			displayChildren($db);
+
+		 ?>
 
  	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 </body>
