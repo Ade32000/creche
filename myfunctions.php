@@ -62,11 +62,15 @@ function displayChildren($db)
 		</table>
 		";
 
-	
-	
 
 }
 
+
+/* 
+
+	This function displays all activities in alphabetical order of names.
+
+*/
 
 function displayActivities($db)
 {
@@ -111,6 +115,7 @@ function displayActivities($db)
 	</table>";
 
 }
+
 
 
 /* 
@@ -167,10 +172,16 @@ function displayAdmin($db)
 		"</tbody>
 	</table>
 	</div>";
-			/* <a href='supprimer.php?numContact=<?= . $datas['children_id'] . ?>'>Supprimer</a> */
+		
 
 }
 
+
+/* 
+
+	This function display the add form child 
+
+*/
 
 function displayAddFormChild()
 {
@@ -205,6 +216,13 @@ function displayAddFormChild()
  
 
 
+/* 
+
+	This function display all datas about a child 
+
+*/
+
+
 function displayChildForm($id, $db)
 	{
 		
@@ -226,4 +244,7 @@ function displayChildForm($id, $db)
 			
 		}
 	}
+
+
+	
 ?>

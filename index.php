@@ -38,13 +38,15 @@
 			Instantiations...
 
 		*/
-$new;
 
 
 		$DBase = new ConnectDB('localhost','newcreche','annie','12345678');
 		$db = $DBase->connexion();
 
 
+		/*
+		 Affichage du formulaire ajout enfant au clic du bouton ajouter 
+		 */
 		
 		if(isset($_GET['add']))
 		{
@@ -52,6 +54,10 @@ $new;
 			displayAddFormChild();
 
 		}	
+
+		/* 
+		Création objet enfant puis envoi dans la bdd
+		*/
 
 		if(isset($_POST['envoyer']))
 		{
@@ -65,11 +71,13 @@ $new;
 
 			$new = new Children ($firstname, $lastname, $birthday, $address, $parents_contact, $remarks);
 			$new->addChild($new, $db);
-			//$new = '';
-
-
+			
 
 		}
+		/* 
+		Retour page admin
+		*/
+
 		elseif (isset($_POST['annuler'])) 
 		{
 
@@ -77,6 +85,9 @@ $new;
 
 		}
 		
+		/*
+		Affichage fiche enfant au clic boutons
+		*/
 
 		if(isset($_POST['infosChild']))
 		{
@@ -89,26 +100,23 @@ $new;
 		//$Helder->cancelChild(11,$db);
 		
 	
-
- 	?>
-
-
-
-	<?php 
+		/*
+		Affichages spécifiques selon boutons cliqués dans navbar
+		*/
 		
-	
-	if(isset($_GET['home']))
-		{
-		 	displayChildren($db); 
-		}
-		elseif(isset($_GET['activities']))
-		{
-			displayActivities($db); 
-		}
-		else
-		{
-			displayAdmin($db); 
-		}
+		if(isset($_GET['home']))
+			{
+			 	displayChildren($db); 
+			}
+			elseif(isset($_GET['activities']))
+			{
+				displayActivities($db); 
+			}
+			else
+			{
+				displayAdmin($db); 
+			}
+
 	 ?>
 
  	<script src="node_modules/jquery/dist/jquery.min.js"></script>
