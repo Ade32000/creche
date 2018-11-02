@@ -245,6 +245,32 @@ function displayChildForm($id, $db)
 		}
 	}
 
+/* 
 
-	
+	This function display the add form activity 
+
+*/
+
+function displayAddFormActivity()
+{
+
+	echo 
+
+	"<form method='POST' action='index.php'>
+		<h5>Ajouter une nouvelle activité</h5>
+
+		<label for='form_name'>Nom de l'activité : </label>
+		<input type='text' name='form_name' placeholder='ex : Peinture'>
+
+		<label for='form_type'>Type de l'activité : </label>
+		<input type='text' name='form_type' placeholder='ex : Création'>
+
+		<label for='form_max'>Date de naissance : </label>
+		<input type='number' name='form_max' placeholder='10'>
+
+		<input type='submit' name='cancel' value='cancel'>
+		<input type='submit' name='send' value='send'>
+	</form>";
+}
+
 ?>
