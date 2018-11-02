@@ -7,6 +7,14 @@
 </head>
 <body>
 
+	<form method="GET" action="index.php">
+ 		<nav class="nav nav-pills nav-fill">
+		  <input type="submit" name="home" class="nav-item nav-link active" value="Accueil">
+		  <input type="hidden" name="children" class="nav-item nav-link disabled" value="Enfants">
+		  <input type="submit"t name="activities" class="nav-item nav-link" value="Activités">
+		  <input type="submit" name="admin" lass="nav-item nav-link" value="Espace Admin">
+		</nav>
+	</form>
 
 	<?php 
 
@@ -30,38 +38,78 @@
 			Instantiations...
 
 		*/
+$new;
 
-		$DBase = new ConnectDB('localhost','newcreche','xx','xx');
+
+		$DBase = new ConnectDB('localhost','newcreche','annie','12345678');
 		$db = $DBase->connexion();
+
+
 		
-		$Helder = new Children ("Helder", "Toto", "1999-04-27", "Rue du paradis 32000 Auch", "Mme Toto 0612345678", "RAS");
+		if(isset($_GET['add']))
+		{
+
+			displayAddFormChild();
+
+		}	
+
+		if(isset($_POST['envoyer']))
+		{
+			
+			$firstname = $_POST['form_firstname'];
+			$lastname = $_POST['form_lastname'];
+			$birthday = $_POST['form_birthday'];
+			$address = $_POST['form_address'];
+			$parents_contact = $_POST['form_parents'];
+			$remarks = $_POST['form_remarks'];
+
+			$new = new Children ($firstname, $lastname, $birthday, $address, $parents_contact, $remarks);
+			$new->addChild($new, $db);
+			//$new = '';
 
 
-		//$Helder->addChild($Helder, $db);
+
+		}
+		elseif (isset($_POST['annuler'])) 
+		{
+
+			displayAdmin($db);	
+
+		}
+		
+
+		if(isset($_POST['infosChild']))
+		{
+
+		}
+
 		//$Helder->cancelChild(11,$db);
 		
+	
+
+ 	?>
+
+
+
+	<?php 
 		
-
-
-		
-
-
- ?>
-
- 		<nav class="nav nav-pills nav-fill">
-		  <a class="nav-item nav-link active" href="#">Accueil</a>
-		  <a class="nav-item nav-link disabled" href="#">Enfants</a>
-		  <a class="nav-item nav-link" href="#">Activités</a>
-		  <a class="nav-item nav-link" href="#">Espace Admin</a>
-		</nav>
-		
-
-		<?php 
-			echo '<h3>Liste des enfants</h3>';
-			displayChildren($db);
-
-		 ?>
+	
+	if(isset($_GET['home']))
+		{
+		 	displayChildren($db, "list"); 
+		}
+		elseif(isset($_GET['activities']))
+		{
+			displayActivities($db); 
+		}
+		else
+		{
+			displayAdmin($db); 
+		}
+	 ?>
 
  	<script src="node_modules/jquery/dist/jquery.min.js"></script>
 </body>
 </html>
+
+

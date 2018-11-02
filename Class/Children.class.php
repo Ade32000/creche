@@ -8,6 +8,7 @@
 class Children 
 {
 
+	public $id;
 	public $firstname;
 	public $lastname;
 	public $birthday;
@@ -60,7 +61,6 @@ class Children
 
         ));
 
-
         return $newChild;
 
 	}
@@ -75,7 +75,9 @@ class Children
 	public function cancelChild($childId,$db)
     {
     
-         $delChild = $db->query('DELETE FROM children WHERE children_id='.$childId);
+        
+        $delChild = $db->query('DELETE FROM children WHERE children_id='.$childId);
+    	//$delChild->bindValue(':num', $_GET['numContact'], PDO::PARAM_INT);
 
          return $delChild;
 
@@ -99,8 +101,8 @@ class Children
 
 	}
 
-
-
+	
+	
 
 }
 
