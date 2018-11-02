@@ -80,7 +80,10 @@ $new;
 
 		if(isset($_POST['infosChild']))
 		{
+			//var_dump($_POST['infosChild']);
+			$id = intval($_POST['infosChild']);
 
+			displayChildForm($id, $db);
 		}
 
 		//$Helder->cancelChild(11,$db);
@@ -96,7 +99,7 @@ $new;
 	
 	if(isset($_GET['home']))
 		{
-		 	displayChildren($db, "list"); 
+		 	displayChildren($db); 
 		}
 		elseif(isset($_GET['activities']))
 		{

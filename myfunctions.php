@@ -16,13 +16,10 @@
 
 */
 
-function displayChildren($db, $request)
+function displayChildren($db)
 {
 
-	if($request == 'list')
-	{
-
-
+	
 		echo 
 
 		"<h3>Liste des enfants</h3>
@@ -44,7 +41,8 @@ function displayChildren($db, $request)
 
 	   	while($datas=$responses->fetch())
 		{
-
+			$id = $datas['children_id'];
+			$val = ['Accès fiche n°',$id];
 			echo 
 
 			"
@@ -52,7 +50,7 @@ function displayChildren($db, $request)
 				<th scope='row'>" . $datas['children_id'] . "</th>
 				<td>" . $datas['children_firstname'] . "</td>
 				<td>" . $datas['children_lastname'] . "</td>
-				<td><form method='POST'><input type='submit' name='infosChild' value='Infos >'></form></td>
+				<td><form method='POST'><input type='submit' name='infosChild' value=" . $val[1] . " ></form></td>
 			</tr>";
 			
 
@@ -64,24 +62,8 @@ function displayChildren($db, $request)
 		</table>
 		";
 
-	}
-	else
-	{
-		$array_resp = [];
-
-		$responses = $db->query('SELECT `children_id`,`children_firstname`, `children_lastname` FROM children ORDER BY `children_firstname` ASC');
-
-	   	while($datas=$responses->fetch())
-		{
-			var_dump('hey');
-			// echo 
-
-			// "<form method='POST' action='index.php'><input type='hidden' name='findId' value=" . $datas['children_id'] . "></form>";
-			$theId = $datas['children_id'];
-			array_push($array_resp, array($datas['children_firstname']=>$theId));
-		}
-			return $array_resp;
-	}
+	
+	
 
 }
 
@@ -222,32 +204,26 @@ function displayAddFormChild()
 }
  
 
-// function displayChildForm($id, $db)
-// {
-// 	var_dump($id);
-// 	echo 
 
-// 	"<h3>Fiche enfant</h3>";
+function displayChildForm($id, $db)
+	{
+		
+		$req = $db->query('SELECT * FROM `children` WHERE `children_id`= ' . $id . '');
+		while($datas = $req->fetch())
+		{
+			echo "
 
-// 	$responses = $db->query('SELECT `children_id`,`children_firstname`,`children_lastname`,`children_birthday`,`children_adress`,`children_parents_contact`,`children_remarks` FROM `children` WHERE `children_id` = ' . $id . '');
+			<h3>Fiche de l'enfant</h3>
+			
+			<p>Prénom : " . $datas['children_firstname'] . "</p>
+	 		<p>Nom : " . $datas['children_lastname'] . "</p>
+	 		<p>Date de naissance : " . $datas['children_birthday'] . "</p>
+	 		<p>Adresse : " . $datas['children_adress'] . "</p>
+	 		<p>Contacts parents : " . $datas['children_parents_contact'] . "</p>
+	 		<p>Remarques éventuelles : " . $datas['children_remarks'] . "</p>
+ 		";
 
-//    	while($datas=$responses->fetch())
-// 	{
-
-// 		echo 
-
-// 		"<input type='text' name='ref' value=" . $datas['children_id'] . ">
-// 		<p>Prénom : " . $datas['children_firstname'] . "</p>
-// 		<p>Nom : " . $datas['children_laststname'] . "</p>
-// 		<p>Date de naissance : " . $datas['children_birthday'] . "</p>
-// 		<p>Adresse : " . $datas['children_adress'] . "</p>
-// 		<p>Contacts parents : " . $datas['children_parents_contact'] . "</p>
-// 		<p>Remarques éventuelles : " . $datas['children_remarks'] . "</p>
-// 		";
-
-// 	}
-
-// 	$responses = $db->prepare('DELETE FROM children WHERE children_id=:num LIMIT 1');
-// }
-
+			
+		}
+	}
 ?>
