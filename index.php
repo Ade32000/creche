@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Gestion crèche</title>
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="app.js"></script>
+
 </head>
 <body>
 
@@ -11,7 +13,7 @@
  		<nav class="nav nav-pills nav-fill">
 		  <input type="submit" name="home" class="nav-item nav-link active" value="Accueil">
 		  <input type="hidden" name="children" class="nav-item nav-link disabled" value="Enfants">
-		  <input type="submit"t name="activities" class="nav-item nav-link" value="Activités">
+		  <input type="submit" name="activities" class="nav-item nav-link" value="Activités">
 		  <input type="submit" name="admin" lass="nav-item nav-link" value="Espace Admin">
 		</nav>
 	</form>
@@ -53,7 +55,19 @@
 
 			displayAddFormChild();
 
-		}	
+		}
+
+		/*
+		 Affichage du formulaire ajout activité au clic du bouton ajouter 
+		 */
+		
+		if(isset($_GET['addAct']))
+		{
+
+			displayAddFormActivity();
+			
+		}
+
 
 		/* 
 		Création objet enfant puis envoi dans la bdd
@@ -71,6 +85,23 @@
 
 			$new = new Children ($firstname, $lastname, $birthday, $address, $parents_contact, $remarks);
 			$new->addChild($new, $db);
+			
+
+		}
+
+		/* 
+		Création objet activité puis envoi dans la bdd
+		*/
+
+		if(isset($_POST['send']))
+		{
+			
+			$name = $_POST['form_name'];
+			$type = $_POST['form_type'];
+			$max = $_POST['form_max'];
+
+			$newAct = new Activities ($name, $type, $max);
+			$newAct->addActivity($newAct, $db);
 			
 
 		}
@@ -103,19 +134,21 @@
 		/*
 		Affichages spécifiques selon boutons cliqués dans navbar
 		*/
-		
+
 		if(isset($_GET['home']))
-			{
-			 	displayChildren($db); 
-			}
-			elseif(isset($_GET['activities']))
-			{
-				displayActivities($db); 
-			}
-			else
-			{
-				displayAdmin($db); 
-			}
+		{	
+		 	displayChildren($db); 
+		}
+
+		if(isset($_GET['activities']))
+		{
+			displayActivities($db); 
+		}
+
+		if(isset($_GET['admin']))
+		{	
+			displayAdmin($db); 
+		}
 
 	 ?>
 

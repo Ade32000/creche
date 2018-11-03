@@ -8,7 +8,61 @@
 
 */
 
+/* 
 
+	This function displays the navbar according to the requested pages 
+
+*/
+
+function displayNavbar()
+{
+
+
+		echo '
+
+		<form method="GET" action="index.php">
+	 		<nav class="nav nav-pills nav-fill">
+			  <input type="submit" name="home" class="nav-item nav-link active" value="Accueil">
+			  <input type="submit" name="activities" class="nav-item nav-link" value="Activités">
+			  <input type="submit" name="admin" lass="nav-item nav-link" value="Espace Admin">
+			</nav>
+		</form>
+
+		';
+
+// 	}
+// 	elseif ($option == "activité") 
+// 	{
+		
+// 		echo '
+
+// 		<form method="GET" action="index.php">
+// 	 		<nav class="nav nav-pills nav-fill">
+// 			  <input type="submit" name="home" class="nav-item nav-link active" value="Accueil">
+// 			  <input type="submit" name="admin" lass="nav-item nav-link" value="Espace Admin">
+// 			</nav>
+// 		</form>
+
+// 		';
+// 	}
+// 	elseif($option == "admin")
+// 	{
+
+// 		echo '
+
+// 		<form method="GET" action="index.php">
+// 	 		<nav class="nav nav-pills nav-fill">
+// 			  <input type="submit" name="home" class="nav-item nav-link active" value="Accueil">
+// 			  <input type="submit" name="add" class="nav-item nav-link" value="Ajouter un enfant">
+// 			  <input type="submit" name="addAct" class="nav-item nav-link" value="Ajouter une activité"">
+// 			  <input type="submit" name="admin" lass="nav-item nav-link" value="Espace Admin">
+// 			</nav>
+// 		</form>
+
+// 		';
+// 	}
+
+ }
 
 /* 
 
@@ -22,7 +76,16 @@ function displayChildren($db)
 	
 		echo 
 
-		"<h3>Liste des enfants</h3>
+		"<form method='GET' action='index.php'>
+	 		<nav class='nav nav-pills nav-fill'>
+			  <input type='submit' name='home' class='nav-item nav-link active' value='Accueil'>
+			  <input type='submit' name='activities' class='nav-item nav-link' value='Activités'>
+			  <input type='submit' name='admin' lass='nav-item nav-link' value='Espace Admin'>
+			</nav>
+		</form>
+
+
+		<h3>Liste des enfants</h3>
 
 		
 		<table class='table table-hover'>
@@ -77,8 +140,15 @@ function displayActivities($db)
 
 	echo 
 
-	"<h3>Liste des activités</h3>
+	"<form method='GET' action='index.php'>
+	 		<nav class='nav nav-pills nav-fill'>
+			  <input type='submit' name='home' class='nav-item nav-link active' value='Accueil'>
+			  <input type='submit' name='admin' lass='nav-item nav-link' value='Espace Admin'>
+			</nav>
+		</form>
 
+	<h3>Liste des activités</h3>
+	
 	<table class='table table-hover'>
 		<thead>
 			<tr>
@@ -104,7 +174,7 @@ function displayActivities($db)
 			<td>" . $datas['activity_name'] . "</td>
 			<td>" . $datas['activity_type'] . "</td>
 			<td>" . $datas['activity_number_max_child'] . "</td>
-			<td><form method='GET'><input type='submit' name='infosAct' value='Infos >'>>/form></td>
+			<td><form method='GET'><input type='submit' name='infosAct' value='Infos >'></form></td>
 		</tr>";
 
 	}
@@ -129,9 +199,18 @@ function displayAdmin($db)
 
 	echo 
 
-	"<div id='adminPage'>
+	"<form method='GET' action='index.php'>
+	 		<nav class='nav nav-pills nav-fill'>
+			  <input type='submit' name='home' class='nav-item nav-link active' value='Accueil'>
+			  <input type='submit' name='add' class='nav-item nav-link' value='Ajouter un enfant'>
+			  <input type='submit' name='addAct' class='nav-item nav-link' value='Ajouter une activité'>
+			  <input type='submit' name='admin' lass='nav-item nav-link' value='Espace Admin'>
+			</nav>
+		</form>
+
+	<div id='adminPage'>
 	<h3>Mettre à jour la  base de données</h3>
-	<span><h4>Liste des enfants</h4></span><span><form method='GET'><input type='submit' name='add' value='Ajouter un enfant'></form></span>
+	<h4>Liste des enfants</h4></span>
 
 	<table class='table table-hover'>
 		<thead>
